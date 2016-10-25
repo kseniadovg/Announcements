@@ -45,8 +45,7 @@ namespace RepositoryAndUow
 
         public virtual void Delete(T entity)
         {
-            context.Entry(entity).State = EntityState.Modified;
-            dbSet.Remove(entity);
+            context.Entry(entity).State = EntityState.Deleted;
         }
         
         public virtual T GetById(int id)

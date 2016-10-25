@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -37,16 +36,7 @@ namespace EFModels
 
         [Required]
         public string AuthorId { get; set; }
-
-        [Required]
-        public virtual Category Category { get; set; }
-
-        public virtual List<Tag> Tags { get; set; }
-
-        public Announcement()
-        {
-            Tags = new List<Tag>();
-        }
-
+        
+        public string Tags { get; set; }
     }
 }

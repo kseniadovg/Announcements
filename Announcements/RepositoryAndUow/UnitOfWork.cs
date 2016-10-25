@@ -16,8 +16,6 @@ namespace RepositoryAndUow
         #region Definition of repositories
 
         private GenericRepository<Announcement> announcementsRepository;
-        private GenericRepository<Category> categoriesRepository;
-        private GenericRepository<Tag> tagsRepository;
 
         #endregion
 
@@ -41,32 +39,7 @@ namespace RepositoryAndUow
             }
         }
 
-        IRepository<Category> IUnitOfWork.CategoriesRepository
-        {
-            get
-            {
-                if (categoriesRepository == null)
-                {
-                    categoriesRepository = new GenericRepository<Category>(contectProvider);
-                }
-
-                return categoriesRepository;
-            }
-        }
-
-        IRepository<Tag> IUnitOfWork.TagsRepository
-        {
-            get
-            {
-                if (tagsRepository == null)
-                {
-                    tagsRepository = new GenericRepository<Tag>(contectProvider);
-                }
-
-                return tagsRepository;
-            }
-        }
-
+        
         #endregion
         
         void IUnitOfWork.SaveChanges()
