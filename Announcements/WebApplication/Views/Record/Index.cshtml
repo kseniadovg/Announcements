@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "RecordView";
+}
+<h2>RecordView</h2>
+
+<div class="row">
+    <div class="col-md-2"><button onclick="butOnClick"> Create Record </button></div>
+    <div class="col-md-2"><button onclick=""></button></div>
+    <div class="col-md-6"><button></button></div>
+    <div class="col-md-2"><button></button></div>
+</div>
+<div class="row">
+    <h2>Records</h2>
+    <ul id="records"></ul>
+</div>
+
+@section scripts
+{
+    <script type="text/javascript">
+        function butOnClick(parameters) {
+            $(document).ready(function () {
+
+            });
+        }
+
+        var uri = 'api/recordmodel';
+
+        $(document).ready(function () {
+            // Send an AJAX request
+            $.getJSON(uri)
+                .done(function (data) {
+                    // On success, 'data' contains a list of records.
+                    $.each(data, function (key, item) {
+                        // Add a list item for the product.
+                        $('<li>', { text: formatItem(item) }).appendTo($('#records'));
+                    });
+                });
+        });
+
+        function formatItem(item) {
+            return item.Name + ': $' + item.Price;
+        }
+
+        function find() {
+            var id = $('#prodId').val();
+            $.getJSON(uri + '/' + id)
+                .done(function (data) {
+                    $('#product').text(formatItem(data));
+                })
+                .fail(function (jqXHR, textStatus, err) {
+                    $('#product').text('Error: ' + err);
+                });
+        }
+    </script>
+}
