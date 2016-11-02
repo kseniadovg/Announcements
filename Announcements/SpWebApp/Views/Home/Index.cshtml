@@ -1,7 +1,176 @@
 ﻿@section SPAViews {
-    @Html.Partial("_Home")
+    @*@Html.Partial("_Home")*@
 }
-@section Scripts{
+
+<div id="tableBlock"></div>
+<div id="editBlock">
+    <p><b>Edit</b></p>
+    <table>
+        <tr><td><input type="hidden" id="editId" /></td><td></td></tr>
+        <tr><td><label>Title: </label></td><td><input type="text" id="editTitle" /></td></tr>
+        <tr><td><label>Body: </label></td><td><input type="text" id="editBody" /></td></tr>
+        <tr><td><label>E-mail: </label></td><td><input type="text" id="editEmail" /></td></tr>
+    </table>
+    <button id="editAnnouncement">Save</button>
+</div>
+<div id="createBlock">
+    <p><b>Add</b></p>
+    <table>
+        <tr><td><label>Title: </label></td><td><input type="text" id="addTitle" /></td></tr>
+        <tr><td><label>Body: </label></td><td><input type="text" id="addBody" /></td></tr>
+        <tr><td><label>E-mail: </label></td><td><input type="text" id="addEmail" /></td></tr>
+    </table>
+    <button id="addAnnouncement">Save</button>
+</div>
+@section scripts
+{
+    <script type="text/javascript">
+    $(document).ready(function () {
+
+        GetAllAnnouncements();
+
+        $("#editAnnouncement").click(function (event) {
+            event.preventDefault();
+            EditAnnouncement();
+        });
+
+        $("#addAnnouncement").click(function (event) {
+            event.preventDefault();
+            AddAnnouncement();
+        });
+
+    });
+    
+    function GetAllAnnouncements() {
+
+        $("#createBlock").css('display', 'block');
+        $("#editBlock").css('display', 'none');
+        $.ajax({
+            url: '/api/Announcements',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                WriteResponse(data);
+            },
+            error: function (x, y, z) {
+                alert(x + '\n' + y + '\n' + z);
+            }
+        });
+    }
+
+    function AddAnnouncement() {
+
+        var announcement = {
+            Title: $('#addTitle').val(),
+            Body: $('#addBody').val(),
+            Email: $('#addEmail').val()
+        };
+
+        $.ajax({
+            url: '/api/Announcements/',
+            type: 'POST',
+            data: JSON.stringify(announcement),
+            contentType: "application/json;charset=utf-8",
+            success: function (data) {
+                GetAllAnnouncements();
+            },
+            error: function (x, y, z) {
+                alert(x + '\n' + y + '\n' + z);
+            }
+        });
+    }
+ 
+    function DeleteAnnouncement(id) {
+
+        $.ajax({
+            url: '/api/Announcements/' + id,
+            type: 'DELETE',
+            contentType: "application/json;charset=utf-8",
+            success: function (data) {
+                GetAllAnnouncements();
+            },
+            error: function (x, y, z) {
+                alert(x + '\n' + y + '\n' + z);
+            }
+        });
+    }
+
+    function EditAnnouncement() {
+        var id = $('#editId').val()
+        
+        var book = {
+            Id: $('#editId').val(),
+            Title: $('#editTitle').val(),
+            Body: $('#editBody').val(),
+            Email: $('#editEmail').val()
+        };
+        $.ajax({
+            url: '/api/Announcements/' + id,
+            type: 'PUT',
+            data: JSON.stringify(announcement),
+            contentType: "application/json;charset=utf-8",
+            success: function (data) {
+                GetAllAnnouncements();
+            },
+            error: function (x, y, z) {
+                alert(x + '\n' + y + '\n' + z);
+            }
+        });
+    }
+
+    function WriteResponse(Announcements) {
+        var strResult = "<table><th>ID</th><th>Title</th><th>Body</th><th>E-mail</th>";
+        $.each(Announcements, function (index, announcement) {
+            strResult += "<tr><td>" + announcement.id + "</td><td> " + announcement.title + "</td><td>" +
+            announcement.body + "</td><td>" + announcement.email +
+            "</td><td><a id='editItem' data-item='" + announcement.id + "' onclick='EditItem(this);' >Edit</a></td>" +
+            "<td><a id='delItem' data-item='" + announcement.id + "' onclick='DeleteItem(this);' >Delete</a></td></tr>";
+        });
+        strResult += "</table>";
+        $("#tableBlock").html(strResult);
+
+    }
+
+    function DeleteItem(el) {
+        var id = $(el).attr('data-item');
+        DeleteAnnouncement(id);
+    }
+
+    function EditItem (el) {
+        var id = $(el).attr('data-item');
+        GetAnnouncement(id);
+    }
+
+    function ShowAnnouncement(announcement) {
+        if (announcement != null) {
+            $("#createBlock").css('display', 'none');
+            $("#editBlock").css('display', 'block');
+            $("#editId").val(announcement.Id);
+            $("#editTitle").val(announcement.Title);
+            $("#editBody").val(announcement.Body);
+            $("#editEmail").val(announcement.Email);
+        }
+        else {
+            alert("Search yielded no result");
+        }
+    }
+
+    function GetAnnouncement(id) {
+        $.ajax({
+            url: '/api/Announcements/' + id,
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                ShowAnnouncement(data);
+            },
+            error: function (x, y, z) {
+                alert(x + '\n' + y + '\n' + z);
+            }
+        });
+    }
+    </script>
+    
     @Scripts.Render("~/bundles/knockout")
     @Scripts.Render("~/bundles/app")
 }
+
