@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.IO;
 
 namespace EFModels
 {
@@ -19,9 +18,9 @@ namespace EFModels
 
         List<Announcement> GetAnnouncements()
         {
-            byte[] b1 = File.ReadAllBytes("C:\\Users\\odov\\Downloads\\images\\house.jpg");
-            byte[] b2 = File.ReadAllBytes("C:\\Users\\odov\\Downloads\\images\\vase.jpg");
-            byte[] b3 = File.ReadAllBytes("C:\\Users\\odov\\Downloads\\images\\spaniel.jpg");
+            byte[] b1 = (byte[])System.ComponentModel.TypeDescriptor.GetConverter(Properties.Resources.house).ConvertTo(Properties.Resources.house, typeof(byte[]));
+            byte[] b2 = (byte[])System.ComponentModel.TypeDescriptor.GetConverter(Properties.Resources.vase).ConvertTo(Properties.Resources.vase, typeof(byte[]));
+            byte[] b3 = (byte[])System.ComponentModel.TypeDescriptor.GetConverter(Properties.Resources.spaniel).ConvertTo(Properties.Resources.spaniel, typeof(byte[]));
 
             List<Announcement> announcements = new List<Announcement>
             {
