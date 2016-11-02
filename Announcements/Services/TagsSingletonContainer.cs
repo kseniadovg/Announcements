@@ -8,23 +8,37 @@ namespace Services
 {
     public class TagsSingletonContainer
     {
-        private volatile TagsSingletonContainer context = null;
-        private static object sync = new Object();
+        private static volatile TagsSingletonContainer tagsContainer = null;
+        private static object sync = new object();
 
-        public TagsSingletonContainer GetContext()
+        HashSet<string> tags = new HashSet<string>();
+
+        public static TagsSingletonContainer GetTagsContainer()
         {
-            if (context == null)
+            if (tagsContainer == null)
             {
                 lock (sync)
                 {
-                    if (context == null)
+                    if (tagsContainer == null)
                     {
-                        context = new TagsSingletonContainer();
+                        tagsContainer = new TagsSingletonContainer();
                     }
                 }
             }
 
-            return context;
+            return tagsContainer;
+        }
+
+        public static HashSet<string> Tags
+        {
+            get
+            {
+                return GetTagsContainer().tags;
+            }
+            set
+            {
+                GetTagsContainer().tags = value;
+            }
         }
     }
 }

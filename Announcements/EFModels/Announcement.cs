@@ -13,7 +13,7 @@ namespace EFModels
         public string Title { get; set; }
 
         [Required]
-        [MaxLength(50)]
+        [MaxLength(500)]
         public string Body { get; set; }
 
         [Column(TypeName = "image")]
