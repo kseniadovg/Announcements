@@ -5,6 +5,15 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/app.js"></script>
+
+    <script src="~/Layouts/AnnouncementsController.js"></script>
+    <script src="~/Layouts/AnnouncementsService.js"></script>
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <script type="text/javascript">
@@ -17,8 +26,10 @@
         window.appInsights=appInsights;
         appInsights.trackPageView();
     </script>
+    
 </head>
-<body>
+<body ng-app="myApp">
+
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
