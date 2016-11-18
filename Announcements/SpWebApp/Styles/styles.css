@@ -1,0 +1,33 @@
+﻿.card {
+   float: left;
+   margin: 5%;
+   padding: 1%;
+   width: 37%;
+   height: 300px;
+   border: 1px solid black;
+   padding-bottom: 50%;
+}
+
+.titleElement{
+
+}
+
+.bodyElement{
+
+}
+
+.tagElement{
+
+}
+
+.tagsElement{
+
+}
+
+.emailElement{
+
+}
+
+.phoneNumberElement{
+
+}
