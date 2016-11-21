@@ -1,13 +1,13 @@
 ﻿.card {
-   float: left;
-   margin: 5%;
-   padding: 1%;
-   width: 37%;
-   height: 300px;
-   padding-bottom: 50%;
-   padding-left:5%;
-   padding-right:5%;
-   border-radius: 5%;
+   /*float:left;*/
+   display:inline-block;
+   margin: 10px;
+   width: 350px;
+   height: 500px;   
+   padding-left:25px;
+   padding-right:25px;
+   padding-bottom:10px;
+   border-radius: 20px;
    background-color:black;
    color:white;
 }
@@ -44,7 +44,7 @@ vertical-align: middle;
 }
 
 .imageDivElement{
-    width:90%; 
+    width:300px; 
     height:200px;
     line-height:200px;
     margin-left: auto;
@@ -56,4 +56,17 @@ vertical-align: middle;
     max-height:100%;
     max-width:100%; 
     vertical-align:middle;
+}
+
+
+.float_center {
+  float: right;
+
+  position: relative;
+  left: -50%; /* or right 50% */
+  text-align: left;
+}
+.float_center > .child {
+  position: relative;
+  left: 50%;
 }

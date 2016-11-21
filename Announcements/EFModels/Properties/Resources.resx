@@ -118,11 +118,41 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="bouquet" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\bouquet.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cakeDecorating" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\cakeDecorating.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="car1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\car1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cupcakes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\cupcakes.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="flowerComposition" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\flowerComposition.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="house" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\house.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="kittens" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\kittens.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="parrots" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\parrots.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="puppies" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\puppies.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="spaniel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\spaniel.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="stamps" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\stamps.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="thematicCake" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\thematicCake.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="vase" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\vase.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
