@@ -2,20 +2,9 @@
     @*@Html.Partial("_Home")*@
 }
 
-@*.city {
-   float: left;
-   margin: 5%;
-   padding: 1%;
-   max-width: 37%;
-   height: 300px;
-   border: 1px solid black;
-  padding-bottom: 30%;
-}*@
-
-
     <div ng-controller="AllAnnouncementsController" style="text-align:center">
         <div class="card" ng-repeat="announcement in allAnnouncements">
-            <h3 ng-bind="announcement.title" style="text-align:center"></h3>
+            <h3 ng-bind="announcement.title"></h3>
             <div class="imageDivElement">
                 <img class="imageElement" ng-src="data:image/JPEG;base64,{{announcement.image}}" />
             </div>
@@ -24,9 +13,20 @@
                 <p ng-bind="announcement.body"></p>
             </div>
             <p></p>
-            <p ng-bind="announcement.email"></p>
-            <p ng-bind="announcement.phoneNumber1"></p>
-            <p ng-bind="announcement.phoneNumber2"></p>
-            <p ng-bind="announcement.phoneNumber3"></p>
+            <div style="text-align:left;">
+                <p><img class="iconElement" src="~/Images/mail.png"/> <span ng-bind="announcement.email"></span></p>
+                <p ng-hide="announcement.phoneNumber1===null"><img class="iconElement" src="~/Images/phone.png"/> <span ng-bind="announcement.phoneNumber1"></span></p>
+                <p ng-hide="announcement.phoneNumber2===null"><img class="iconElement" src="~/Images/phone.png"/> <span ng-bind="announcement.phoneNumber2"></span></p>
+                <p ng-hide="announcement.phoneNumber3===null"><img class="iconElement" src="~/Images/phone.png"/> <span ng-bind="announcement.phoneNumber3"></span></p>
+                <p class="fakeText" ng-show="announcement.phoneNumber1===null">1</p>
+                <p class="fakeText" ng-show="announcement.phoneNumber2===null">2</p>
+                <p class="fakeText" ng-show="announcement.phoneNumber3===null">3</p>
+                <p></p>
+            </div>
+            
+            @*<p ng-bind="announcement.email"></p>
+            <p ng-bind="announcement.phoneNumber1===null ? '.....' : announcement.phoneNumber1"></p>
+            <p ng-bind="announcement.phoneNumber2===null ? '...' : announcement.phoneNumber2"></p>
+            <p ng-bind="announcement.phoneNumber3===null ? '.' : announcement.phoneNumber3"></p>*@
         </div>
     </div>

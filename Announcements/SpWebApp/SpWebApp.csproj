@@ -270,6 +270,8 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\mail.png" />
+    <Content Include="Images\phone.png" />
     <Content Include="Layouts\AnnouncementsController.js" />
     <Content Include="Layouts\AnnouncementsService.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />

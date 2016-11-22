@@ -12,9 +12,6 @@
    color:white;
 }
 
-.titleElement{
-
-}
 
 .bodyDivElement{
 border: 1px solid white; 
@@ -25,22 +22,6 @@ text-align:center;
 padding:2px;
 display: table-cell; 
 vertical-align: middle;
-}
-
-.tagElement{
-
-}
-
-.tagsElement{
-
-}
-
-.emailElement{
-
-}
-
-.phoneNumberElement{
-
 }
 
 .imageDivElement{
@@ -58,15 +39,15 @@ vertical-align: middle;
     vertical-align:middle;
 }
 
-
-.float_center {
-  float: right;
-
-  position: relative;
-  left: -50%; /* or right 50% */
-  text-align: left;
+.iconElement{
+    width:20px;
+    height:20px;
 }
-.float_center > .child {
-  position: relative;
-  left: 50%;
+
+.fakeText{
+    color:black;
+}
+
+td:first-child + td {
+    text-align: left;
 }
