@@ -326,6 +326,9 @@
     <Content Include="Scripts\app\app.viewmodel.js" />
     <Content Include="Scripts\app\common.js" />
     <Content Include="Scripts\app\home.viewmodel.js" />
+    <Content Include="Styles\style1.css" />
+    <Content Include="Styles\style2.css" />
+    <Content Include="Styles\style3.css" />
     <Content Include="Styles\style4.css" />
     <Content Include="Styles\styles.css" />
     <Content Include="Views\_ViewStart.cshtml" />

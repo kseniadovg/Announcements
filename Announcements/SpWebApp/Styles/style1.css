@@ -1,33 +1,30 @@
 ﻿.card {
-   /*float:left;*/
    display:inline-block;
-   margin: 10px;
-   width: 350px;
-   height: 500px;   
-   padding-left:25px;
-   padding-right:25px;
-   padding-bottom:10px;
-   border-radius: 20px;
+   margin: 5%;
+   width: 90%;
+   padding-left:5%;
+   padding-right:5%;
+   padding-bottom:5%;
+   border-radius: 5%;
    background-color:black;
    color:white;
 }
 
-
 .bodyDivElement{
 border: 1px solid white; 
-border-radius: 5px;
-height:70px; 
-width:300px; 
+margin: 5%;
+padding-left:5%;
+padding-right:5%;
+border-radius: 5%;
+height:auto; 
+width:90%; 
 text-align:center; 
-padding:2px;
-display: table-cell; 
 vertical-align: middle;
 }
 
 .imageDivElement{
-    width:300px; 
-    height:200px;
-    line-height:200px;
+    width:90%; 
+    height:auto;
     margin-left: auto;
     margin-right: auto; 
     text-align:center;
@@ -36,7 +33,6 @@ vertical-align: middle;
 .imageElement{
     max-height:100%;
     max-width:100%; 
-    vertical-align:middle;
 }
 
 .iconElement{
@@ -50,4 +46,5 @@ vertical-align: middle;
 
 .contactsDiv{
     text-align:left;
+    margin: 5%;
 }
