@@ -42,6 +42,7 @@ vertical-align: middle;
 
 .fakeText{
     color:black;
+    display: none;
 }
 
 .contactsDiv{
