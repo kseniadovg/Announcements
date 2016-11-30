@@ -319,7 +319,27 @@ namespace SpWebApp.Controllers
                 return RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
             }
             var result = await UserManager.AddLoginAsync(User.Identity.GetUserId(), loginInfo.Login);
+            if(result.Succeeded)
+            {
+                var currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                await StoreFacebookAuthToken(currentUser);
+            }
             return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
+        }
+
+        private async Task StoreFacebookAuthToken(ApplicationUser user)
+        {
+            var claimsIdentity = await AuthenticationManager.GetExternalIdentityAsync(DefaultAuthenticationTypes.ExternalCookie);
+            if (claimsIdentity != null)
+            {
+                // Retrieve the existing claims for the user and add the FacebookAccessTokenClaim
+                var currentClaims = await UserManager.GetClaimsAsync(user.Id);
+                var facebookAccessToken = claimsIdentity.FindAll("FacebookAccessToken").First();
+                if (currentClaims.Count() <= 0)
+                {
+                    await UserManager.AddClaimAsync(user.Id, facebookAccessToken);
+                }
+            }
         }
 
         protected override void Dispose(bool disposing)

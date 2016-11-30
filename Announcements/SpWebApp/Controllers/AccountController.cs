@@ -9,6 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using SpWebApp.Models;
+using System.Web.Security;
+using Facebook;
 
 namespace SpWebApp.Controllers
 {
@@ -340,11 +342,24 @@ namespace SpWebApp.Controllers
                 return RedirectToAction("Login");
             }
 
+            if (loginInfo.Login.LoginProvider == "Facebook")
+            {
+                var user = await UserManager.FindAsync(loginInfo.Login);
+                if (user != null)
+                {
+                    await StoreFacebookAuthToken(user);
+                }
+            }
             // Sign in the user with this external login provider if the user already has a login
             var result = await SignInManager.ExternalSignInAsync(loginInfo, isPersistent: false);
             switch (result)
             {
-                case SignInStatus.Success:
+                case SignInStatus.Success:               
+                        
+                            //var identity = AuthenticationManager.GetExternalIdentity(DefaultAuthenticationTypes.ExternalCookie);                        
+                            //var user = await UserManager.FindAsync(loginInfo.Login);    
+                            //Session["accessToken"]= identity.FindFirstValue("FacebookAccessToken");
+                       
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -359,6 +374,20 @@ namespace SpWebApp.Controllers
             }
         }
 
+        private async Task StoreFacebookAuthToken(ApplicationUser user)
+        {
+            var claimsIdentity = await AuthenticationManager.GetExternalIdentityAsync(DefaultAuthenticationTypes.ExternalCookie);
+            if (claimsIdentity != null)
+            {
+                // Retrieve the existing claims for the user and add the FacebookAccessTokenClaim
+                var currentClaims = await UserManager.GetClaimsAsync(user.Id);
+                var facebookAccessToken = claimsIdentity.FindAll("FacebookAccessToken").First();
+                if (currentClaims.Count() <= 0)
+                {
+                    await UserManager.AddClaimAsync(user.Id, facebookAccessToken);
+                }
+            }
+        }
         //
         // POST: /Account/ExternalLoginConfirmation
         [HttpPost]
@@ -386,6 +415,7 @@ namespace SpWebApp.Controllers
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {
+                        await StoreFacebookAuthToken(user);
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                         return RedirectToLocal(returnUrl);
                     }

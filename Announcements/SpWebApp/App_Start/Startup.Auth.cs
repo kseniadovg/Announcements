@@ -10,6 +10,8 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using SpWebApp.Models;
 using SpWebApp.Providers;
+using Microsoft.Owin.Security.Facebook;
+using System.Threading.Tasks;
 
 namespace SpWebApp
 {
@@ -80,9 +82,26 @@ namespace SpWebApp
             //    consumerSecret: "");
 
 
-            app.UseFacebookAuthentication(
-                appId: "1147567228663793",
-                appSecret: "2408fceb49e72ff0e2e4a9810e72a9ce");
+            //app.UseFacebookAuthentication(
+            //    appId: "1147567228663793",
+            //    appSecret: "2408fceb49e72ff0e2e4a9810e72a9ce");
+
+            var facebookAuthenticationOptions = new FacebookAuthenticationOptions()
+            {
+                AppId = "1147567228663793",
+                AppSecret = "2408fceb49e72ff0e2e4a9810e72a9ce",
+                Provider = new FacebookAuthenticationProvider
+                {
+                    OnAuthenticated = context =>
+                    {
+                        context.Identity.AddClaim(new System.Security.Claims.Claim("FacebookAccessToken", context.AccessToken));
+                        return Task.FromResult(true);
+                    }
+                }
+            };
+            facebookAuthenticationOptions.Scope.Add("email");
+            facebookAuthenticationOptions.Scope.Add("public_profile");
+            app.UseFacebookAuthentication(facebookAuthenticationOptions);
 
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()

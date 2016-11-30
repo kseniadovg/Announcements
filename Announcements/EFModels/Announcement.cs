@@ -36,6 +36,9 @@ namespace EFModels
 
         [Required]
         public string AuthorId { get; set; }
+
+        [NotMapped]
+        public string AuthorPicture { get; set; }
         
         public string Tags { get; set; }
     }
