@@ -15,6 +15,6 @@ myApp.controller('MyAnnouncementsController', ['$scope', 'AnnouncementsService',
 myApp.controller('FriendsAnnouncementsController', ['$scope', 'AnnouncementsService', function ($scope, AnnouncementsService) {
     AnnouncementsService.GetMyFriendsAnnouncements()
         .success(function (data) {
-            $scope.myAnnouncements = data;
+            $scope.friendsAnnouncements = data;
         });
 }]);

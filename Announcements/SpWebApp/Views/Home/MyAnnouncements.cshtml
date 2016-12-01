@@ -9,16 +9,27 @@
             <p ng-bind="announcement.body"></p>
         </div>
         <p></p>
-        <div class="contactsDiv">
-            <p><img class="iconElement" src="~/Images/mail.png" /> <span ng-bind="announcement.email"></span></p>
-            <p ng-hide="announcement.phoneNumber1===null"><img class="iconElement" src="~/Images/phone.png" /> <span ng-bind="announcement.phoneNumber1"></span></p>
-            <p ng-hide="announcement.phoneNumber2===null"><img class="iconElement" src="~/Images/phone.png" /> <span ng-bind="announcement.phoneNumber2"></span></p>
-            <p ng-hide="announcement.phoneNumber3===null"><img class="iconElement" src="~/Images/phone.png" /> <span ng-bind="announcement.phoneNumber3"></span></p>
-            <p class="fakeText" ng-show="announcement.phoneNumber1===null">1</p>
-            <p class="fakeText" ng-show="announcement.phoneNumber2===null">2</p>
-            <p class="fakeText" ng-show="announcement.phoneNumber3===null">3</p>
-            <p></p>
-        </div>
+        <table class="authorDataTable">
+            <tr>
+                <td>
+                    <div class="contactsDiv">
+                        <p><img class="iconElement" src="~/Images/mail.png" /> <span ng-bind="announcement.email"></span></p>
+                        <p ng-hide="announcement.phoneNumber1===null"><img class="iconElement" src="~/Images/phone.png" /> <span ng-bind="announcement.phoneNumber1"></span></p>
+                        <p ng-hide="announcement.phoneNumber2===null"><img class="iconElement" src="~/Images/phone.png" /> <span ng-bind="announcement.phoneNumber2"></span></p>
+                        <p ng-hide="announcement.phoneNumber3===null"><img class="iconElement" src="~/Images/phone.png" /> <span ng-bind="announcement.phoneNumber3"></span></p>
+                        <p class="fakeText" ng-show="announcement.phoneNumber1===null">1</p>
+                        <p class="fakeText" ng-show="announcement.phoneNumber2===null">2</p>
+                        <p class="fakeText" ng-show="announcement.phoneNumber3===null">3</p>
+                        <p></p>
+                    </div>
+                </td>
+                <td class="userPhotoTd">
+                    <img src="{{announcement.authorPicture}}"/>
+                </td>
+            </tr>
+
+        </table>
+        
     </div>
 </div>
 

@@ -65,7 +65,8 @@ namespace SpWebApp.Controllers
         {
             var access_token = ((ClaimsIdentity)User.Identity).Claims.FirstOrDefault(c => c.Type == "FacebookAccessToken").Value;
             var client = new FacebookClient(access_token);
-            dynamic fbresult = client.Get("me?fields=id,picture");
+            //dynamic fbresult = client.Get("me?fields=id,picture.width(110).height(110)");
+            dynamic fbresult = client.Get("me?fields=id,picture.type(normal)");
             FacebookUserModel facebookUser = Newtonsoft.Json.JsonConvert.DeserializeObject<FacebookUserModel>(fbresult.ToString());
 
             return facebookUser;
@@ -73,15 +74,17 @@ namespace SpWebApp.Controllers
 
         List<FacebookFriendModel> getFriends()
         {
-            var client = new FacebookClient(Session["accessToken"].ToString());
+            var access_token = ((ClaimsIdentity)User.Identity).Claims.FirstOrDefault(c => c.Type == "FacebookAccessToken").Value;
+            var client = new FacebookClient(access_token);
             dynamic fbresult = client.Get("/me/friends");
             var friendsList = new List<FacebookFriendModel>();
-            foreach (dynamic friend in fbresult.data)
+            foreach (dynamic friend in (IEnumerable<dynamic>)fbresult.data)
             {
                 friendsList.Add(new FacebookFriendModel()
                 {
                     id = friend.id,
-                    picture = @"https://graph.facebook.com/" + friend.id + "/picture?type=large"
+                    name=friend.name,
+                    picture = @"https://graph.facebook.com/" + friend.id + "/picture?type=normal"
                 });
             }
             return friendsList;

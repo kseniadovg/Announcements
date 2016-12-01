@@ -5,7 +5,7 @@
    padding-left:5%;
    padding-right:5%;
    padding-bottom:5%;
-   border-radius: 5%;
+   border-radius: 20px;
    background-color:black;
    color:white;
 }
@@ -15,7 +15,7 @@ border: 1px solid white;
 margin: 5%;
 padding-left:5%;
 padding-right:5%;
-border-radius: 5%;
+border-radius: 5px;
 height:auto; 
 width:90%; 
 text-align:center; 
@@ -48,4 +48,16 @@ vertical-align: middle;
 .contactsDiv{
     text-align:left;
     margin: 5%;
+}
+
+.userPhotoTd{
+    display: none;
+}
+
+.authorDataTable {
+    border: 1px solid white;
+    width: 90%;
+    border-collapse: initial;
+    border-radius: 5px;
+    margin-left: 5%;
 }

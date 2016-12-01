@@ -101,6 +101,7 @@ namespace SpWebApp
             };
             facebookAuthenticationOptions.Scope.Add("email");
             facebookAuthenticationOptions.Scope.Add("public_profile");
+            facebookAuthenticationOptions.Scope.Add("user_friends");
             app.UseFacebookAuthentication(facebookAuthenticationOptions);
 
 

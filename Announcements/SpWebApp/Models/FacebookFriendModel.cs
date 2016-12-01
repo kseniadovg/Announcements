@@ -3,6 +3,7 @@
     public class FacebookFriendModel
     {
         public string id { get; set; }
+        public string name { get; set; }
         public string picture { get; set; }
     }
 }
